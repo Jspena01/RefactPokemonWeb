@@ -12,7 +12,18 @@ export default class colliders {
         this.enemy.position.x + this.enemy.size
     ) {
       if (this.enemy.position.x >= this.characterP1.position.x) {
-        console.log("Esta en el centro de x");
+        if (
+          this.characterP1 &&
+          this.enemy &&
+          this.characterP1.position.y <= this.enemy.position.y
+        ) {
+          if (
+            this.characterP1.position.y + this.characterP1.size >=
+            this.enemy.position.y + this.enemy.size
+          ) {
+            console.log("Se encuentran en la misma columna");
+          }
+        }
       }
     }
   }
