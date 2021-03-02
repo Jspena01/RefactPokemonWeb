@@ -13,7 +13,6 @@ export default class paddle {
       y: gameHeight / 2,
     };
   }
-  draw(context) {}
   update(deltaTime) {
     if (!deltaTime) return;
   }

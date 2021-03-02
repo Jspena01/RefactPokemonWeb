@@ -26,7 +26,7 @@ export default class enemy extends paddle {
     this.colorUp = "#a1a";
     this.size = 40;
     this.context = context;
-    this.position.x = 200;
+    this.position.x = 600;
     this.position.y = Math.round(Math.random() * 800);
   }
   limitRX = () => {

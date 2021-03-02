@@ -1,9 +1,21 @@
 export default class colliders {
-  constructor(character, context) {
+  constructor(character, context, enemy) {
     this.characterP1 = character;
+    this.enemy = enemy;
     this.context = context;
   }
-
+  colliderCollision() {
+    if (
+      this.characterP1 &&
+      this.enemy &&
+      this.characterP1.position.x + this.characterP1.size >=
+        this.enemy.position.x + this.enemy.size
+    ) {
+      if (this.enemy.position.x >= this.characterP1.position.x) {
+        console.log("Esta en el centro de x");
+      }
+    }
+  }
   drawCollision() {
     //Margen entre el borde izquierdo y la esquina superior izquierda del personaje eje y
     this.context.beginPath();
@@ -43,7 +55,6 @@ export default class colliders {
       this.characterP1.position.y - this.characterP1.size
     );
     this.context.stroke();
-
 
     // Margen entre el borde izquierdo y la esquina inferior izquierda del personaje eje y
 
