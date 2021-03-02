@@ -30,9 +30,9 @@ const gameLoop = (timestamp) => {
   //Dibuja el personaje
   characterP1.drawCharacter();
   //Dibuja colisiones para comprobar los border de las colisiones del personaje
-  colliderCharacterP1.drawCollision();
+  // colliderCharacterP1.drawCollision();
   //Dibuja colisiones para comprobar los border de las colisiones del enemigo
-  colliderEnemy1.drawCollision();
+  // colliderEnemy1.drawCollision();
   //Comprueba si el personaje 1 esta colisionando con el enemigo
   colliderCharacterP1.colliderCollision();
   //Llama a la funcion cada frame

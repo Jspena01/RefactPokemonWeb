@@ -11,17 +11,18 @@ export default class colliders {
       this.characterP1.position.x + this.characterP1.size >=
         this.enemy.position.x + this.enemy.size
     ) {
-      if (this.enemy.position.x >= this.characterP1.position.x) {
+      if (this.enemy.position.x + 5 >= this.characterP1.position.x) {
         if (
           this.characterP1 &&
           this.enemy &&
-          this.characterP1.position.y <= this.enemy.position.y
+          this.characterP1.position.y <= this.enemy.position.y + 5
         ) {
           if (
-            this.characterP1.position.y + this.characterP1.size >=
+            this.characterP1.position.y + this.characterP1.size + 5 >=
             this.enemy.position.y + this.enemy.size
           ) {
-            console.log("Se encuentran en la misma columna");
+            this.enemy.position.x = Math.round(Math.random() * 800);
+            this.enemy.position.y = Math.round(Math.random() * 800);
           }
         }
       }

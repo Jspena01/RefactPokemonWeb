@@ -26,7 +26,7 @@ export default class enemy extends paddle {
     this.colorUp = "#a1a";
     this.size = 40;
     this.context = context;
-    this.position.x = 600;
+    this.position.x = Math.round(Math.random() * 800);
     this.position.y = Math.round(Math.random() * 800);
   }
   limitRX = () => {
@@ -42,9 +42,9 @@ export default class enemy extends paddle {
     return this.position.y - this.size <= 0;
   };
   limitCollition() {
-    if (this.limitUY()) this.position.y = 0 + this.size;
+    if (this.limitUY()) this.position.y = 0 + this.size + 5;
     if (this.limitBY()) this.position.y = this.gameHeight - this.size;
     if (this.limitRX()) this.position.x = this.gameWidth - this.size;
-    if (this.limitLX()) this.position.x = 0 + this.size;
+    if (this.limitLX()) this.position.x = 0 + this.size + 10;
   }
 }
