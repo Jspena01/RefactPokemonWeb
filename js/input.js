@@ -1,5 +1,3 @@
-import Paddle from "./paddles.js";
-
 export default class inputHandler {
   constructor(characterP1) {
     //Detect if the character will collide with a border wall/floor
