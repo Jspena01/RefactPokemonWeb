@@ -7,23 +7,24 @@ export default class colliders {
     this.scorePoints = 0;
     this.time = time;
     this.sec = 0;
+    this.sec2 = undefined;
     this.screenTime = 15;
     this.min = 0;
     this.scoreGoal = 10;
     this.respawn = 0;
   }
 
-  colliderCollision(timestamp, sound, menu,nickname) {
+  colliderCollision(timestamp, sound, menu, nickname, screenTime) {
     this.timeNow = timestamp / 1000;
     if (this.sec <= Math.trunc(this.timeNow)) {
       this.sec++;
       this.respawn++;
+      this.screenTime--;
       if (this.respawn >= 5) {
         this.respawn = 0;
         this.enemy.position.x = Math.round(Math.random() * 800);
         this.enemy.position.y = Math.round(Math.random() * 800);
       }
-      this.screenTime--;
       if (
         this.screenTime <= 9 &&
         this.screenTime > 0 &&
@@ -51,30 +52,28 @@ export default class colliders {
           this.enemy.position.x = Math.round(Math.random() * 800);
           this.enemy.position.y = Math.round(Math.random() * 800);
           menu.classList.remove("main-menu-off");
-          menu.firstElementChild.classList.remove(
-            "main-menu-items-off"
-          );
+          menu.firstElementChild.classList.remove("main-menu-items-off");
           menu.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
             "main-menu-items-off"
           );
           menu.firstElementChild.innerHTML = `Congratulations ${nickname.toLowerCase()} you win! `;
-          menu.firstElementChild.nextElementSibling.nextElementSibling.value = "Play again!";
+          menu.firstElementChild.nextElementSibling.nextElementSibling.value =
+            "Play again!";
           this.characterP1.position.x = this.characterP1.gameWidth / 2;
           this.characterP1.position.y = this.characterP1.gameHeight / 2;
-        }else if(this.scorePoints <= this.scoreGoal && this.screenTime <= 0){
+        } else if (this.scorePoints <= this.scoreGoal && this.screenTime <= 0) {
           this.scorePoints = 0;
           this.screenTime = 15;
           this.enemy.position.x = Math.round(Math.random() * 800);
           this.enemy.position.y = Math.round(Math.random() * 800);
           menu.classList.remove("main-menu-off");
-          menu.firstElementChild.classList.remove(
-            "main-menu-items-off"
-          );
+          menu.firstElementChild.classList.remove("main-menu-items-off");
           menu.firstElementChild.nextElementSibling.nextElementSibling.classList.remove(
             "main-menu-items-off"
           );
           menu.firstElementChild.innerHTML = `Game over!`;
-          menu.firstElementChild.nextElementSibling.nextElementSibling.value = "Play again!";
+          menu.firstElementChild.nextElementSibling.nextElementSibling.value =
+            "Play again!";
           this.characterP1.position.x = this.characterP1.gameWidth / 2;
           this.characterP1.position.y = this.characterP1.gameHeight / 2;
         }
@@ -109,4 +108,8 @@ export default class colliders {
       }
     }
   }
+  resetTime = () => {
+    this.screenTime = 15;
+    this.time.innerHTML = `<span class="main-info-time" id="mainInfoTime">Time: 0${this.min}:${this.screenTime} </span>  `;
+  };
 }

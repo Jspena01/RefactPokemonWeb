@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   background-color: dimgray;
 }
 .main-screen {
@@ -14,10 +14,10 @@ body{
   font-size: 1.5em;
   color: #fff;
 }
-.winner{
-    font-size: 3em;
-    color: #fff;
-    margin: 20px;
+.winner {
+  font-size: 3em;
+  color: #fff;
+  margin: 20px;
 }
 .main-info-time {
   font-size: 1.2em;
@@ -55,11 +55,11 @@ body{
   transition: height 1s;
   margin: 0 auto;
 }
-.main-menu-off{
+.main-menu-off {
   height: 0%;
   transition: height 1s;
 }
-.main-menu-items-off{
+.main-menu-items-off {
   display: none;
 }
 .main-menu-nickname {

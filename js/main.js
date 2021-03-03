@@ -12,16 +12,7 @@ const menu = document.getElementById("mainMenu");
 const sound = document.getElementById("sound");
 const bgSound = document.getElementById("background-sound");
 const nickname = document.getElementById("nickname");
-bgSound.volume = .2;
-play.addEventListener("click",() =>{
-  setTimeout(()=>{gameLoop()},850);
-  menu.classList.add("main-menu-off");
-  menu.firstElementChild.classList.add("main-menu-items-off");
-  menu.firstElementChild.nextElementSibling.classList.add("main-menu-items-off");
-  menu.firstElementChild.nextElementSibling.nextElementSibling.classList.add("main-menu-items-off");
-  }
-  )
-
+bgSound.volume = 0.2;
 
 const gameWidth = canvas.width;
 const gameHeight = canvas.height;
@@ -29,13 +20,38 @@ const gameHeight = canvas.height;
 const enemy1 = new enemy(gameWidth, gameHeight, context);
 const characterP1 = new paddle(gameWidth, gameHeight, context, enemy1);
 const input = new inputHandler(characterP1);
-const colliderCharacterP1 = new collider(characterP1, context, enemy1, score,time);
+const colliderCharacterP1 = new collider(
+  characterP1,
+  context,
+  enemy1,
+  score,
+  time
+);
 const colliderEnemy1 = new collider(enemy1, context, characterP1);
-if(bgSound.paused){bgSound.play()}
+if (bgSound.paused) {
+  bgSound.play();
+}
+
+play.addEventListener("click", () => {
+  setTimeout(() => {
+    gameLoop();
+  }, 850);
+  menu.classList.add("main-menu-off");
+  menu.firstElementChild.classList.add("main-menu-items-off");
+  menu.firstElementChild.nextElementSibling.classList.add(
+    "main-menu-items-off"
+  );
+  menu.firstElementChild.nextElementSibling.nextElementSibling.classList.add(
+    "main-menu-items-off"
+  );
+  setTimeout(() => {
+    colliderCharacterP1.resetTime();
+  }, 1000);
+});
 
 let lastTime = 0;
 const gameLoop = (timestamp) => {
-let deltaTime = timestamp - lastTime;
+  let deltaTime = timestamp - lastTime;
   lastTime = timestamp;
   //Limpia el lienzo y los dibujos realizados
   context.clearRect(0, 0, gameWidth, gameHeight);
@@ -52,9 +68,14 @@ let deltaTime = timestamp - lastTime;
   //Dibuja colisiones para comprobar los border de las colisiones del enemigo
   // colliderEnemy1.drawCollision();
   //Comprueba si el personaje 1 esta colisionando con el enemigo
-  colliderCharacterP1.colliderCollision(timestamp,sound,menu,nickname.value);
+
+  colliderCharacterP1.colliderCollision(
+    timestamp,
+    sound,
+    menu,
+    nickname.value,
+    colliderCharacterP1.screenTime
+  );
   //Llama a la funcion cada frame
   requestAnimationFrame(gameLoop);
 };
-
-  // gameLoop();
