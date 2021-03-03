@@ -1,8 +1,8 @@
 export default class paddle {
   constructor(gameWidth, gameHeight, context) {
     this.context = context;
-    this.size = 50;
-    this.speed = 10;
+    this.size = 45;
+    this.speed = 8;
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.colorUp = "#f00";

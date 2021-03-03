@@ -3,8 +3,90 @@
   padding: 0;
   box-sizing: border-box;
 }
-.screen {
+body{
+  background-color: dimgray;
+}
+.main-screen {
   border: 1px solid #000;
-  margin: 4% 25%;
+}
+.main-info-score,
+.main-info-time {
+  font-size: 1.5em;
+  color: #fff;
+}
+.winner{
+    font-size: 3em;
+    color: #fff;
+    margin: 20px;
+}
+.main-info-time {
+  font-size: 1.2em;
+}
+.main-info {
+  display: inherit;
+  justify-content: space-around;
+  font-weight: bold;
+  padding: 10px;
   background-image: url(/resourses/bg.png);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 850px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 3% auto;
+  background-image: url(/resourses/connectwork.png);
+}
+
+.main-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 100%;
+  background-image: url(/resourses/bg.png);
+  transition: height 1s;
+  margin: 0 auto;
+}
+.main-menu-off{
+  height: 0%;
+  transition: height 1s;
+}
+.main-menu-items-off{
+  display: none;
+}
+.main-menu-nickname {
+  font-size: 2em;
+  text-align: center;
+  outline: 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 30px;
+}
+.main-menu-nickname:focus {
+  border: 2px solid black;
+}
+.main-menu-nickname::placeholder {
+  color: #999;
+}
+.main-menu-start {
+  padding: 20px 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+}
+.main-menu-start:hover {
+  border: 1px solid rgb(60, 60, 60);
+  background-color: rgb(199, 199, 199);
+  transition: background 0.5s, drop-shadow 0.5s;
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
